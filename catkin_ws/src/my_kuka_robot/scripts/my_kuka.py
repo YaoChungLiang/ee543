@@ -21,7 +21,6 @@ def debug_log(log):
         print(log)
     pass
 
-pi=np.pi
 # DH parameters (symbolic form)
 al0, al1, al2, al3, al4, al5, al6 = symbols('alpha0:7')  	# link_twist
 a0, a1, a2, a3, a4, a5, a6 	  = symbols('a0:7')  		# link_length
@@ -30,17 +29,17 @@ d1, d2, d3, d4, d5, d6, d7 	  = symbols('d1:8')  		# joint_length
 
 # TODO: fill in the DH table for the kuka arm
 # how does this work?
-s = {al0: 0,     a0: 0,      d1: 0.75,   th1: th1,
+s = {al0: 0,     a0: 0,      d1: 0.75,   ,
      al1: -pi/2, a1: 0.35,   d2: 0,      th2: th2-pi/2,
-     al2: 0,     a2: 1.25,   d3: 0,      th3: th3,
-     al3: -pi/2, a3: -0.054, d4: 1.5,    th4: th4,
-     al4: pi/2,  a4: 0,      d5: 0,      th5: th5,
-     al5: -pi/2, a5: 0,      d6: 0,      th6: th6,
+     al2: 0,     a2: 1.25,   d3: 0,      ,
+     al3: -pi/2, a3: -0.054, d4: 1.5,    ,
+     al4: pi/2,  a4: 0,      d5: 0,      ,
+     al5: -pi/2, a5: 0,      d6: 0,      ,
      al6: 0,     a6: 0,      d7: 0.303,  th7: 0}
 
 def createMatrix(al, a, th, d):
     # TODO: Fill in the 2-4 rows of matrix
-    mat =  Matrix([[         cos(th),        -sin(th),        0,          a],
+    mat =  Matrix([[         cos(th),        -sin(th),        0,         al],
                    [  sin(th)*cos(a),  cos(th)*cos(a),  -sin(a),  -sin(a)*d],
                    [  sin(th)*cos(a),  cos(th)*sin(a),   cos(a),   cos(a)*d],
                    [               0,               0,        0,          1]])
