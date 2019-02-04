@@ -39,10 +39,10 @@ s = {al0: 0,     a0: 0,      d1: 0.75,
 
 def createMatrix(al, a, th, d):
     # TODO: Fill in the 2-4 rows of matrix
-    mat =  Matrix([[         cos(th),        -sin(th),        0,         al],
-                   [  sin(th)*cos(a),  cos(th)*cos(a),  -sin(a),  -sin(a)*d],
-                   [  sin(th)*cos(a),  cos(th)*sin(a),   cos(a),   cos(a)*d],
-                   [               0,               0,        0,          1]])
+    mat =  Matrix([[         cos(th),        -sin(th),        0,         a],
+                   [ sin(th)*cos(al), cos(th)*cos(al), -sin(al),-sin(al)*d],
+                   [ sin(th)*sin(al), cos(th)*sin(al),  cos(al), cos(al)*d],
+                   [               0,               0,        0,         1]])
 
     return mat
 
@@ -124,7 +124,7 @@ class MyKukaSolver(object):
         # tmp = zeros(4,4)
         # tmp[0:3,0:3] = simplify(rot_z(pi)*rot_y(-pi/2))
         # tmp[3,3] = 1
-        self.R_corr = Matrix(simplify(rot_z(pi)*rot_y(-pi/2)))
+        self.R_corr = Matrix(simplify(rot_y(pi/2)*rot_z(pi)))
         # self.T0_G = simplify(self.T0_G * self.R_corr)
         # debug_log("debug R_corr")    
         # self.T_total = self.T
