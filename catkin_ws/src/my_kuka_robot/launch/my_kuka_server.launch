@@ -1,0 +1,8 @@
+<launch>
+  <node 
+	name="my_kuka" 
+	pkg="my_kuka_robot" 
+	type="my_kuka.py"
+	output="screen" >
+  </node>
+</launch>

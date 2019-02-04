@@ -1,0 +1,8 @@
+prefix=/home/nansong/ee543/coding/catkin_ws/devel
+
+Name: my_kuka_robot
+Description: Description of my_kuka_robot
+Version: 0.0.0
+Cflags: -I/home/nansong/ee543/coding/catkin_ws/devel/include
+Libs: -L/home/nansong/ee543/coding/catkin_ws/devel/lib 
+Requires: 
