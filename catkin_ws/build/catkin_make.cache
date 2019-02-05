@@ -1,2 +1,2 @@
-my_kuka_robot
+my_kuka_robot:project
 -DCATKIN_DEVEL_PREFIX=/home/nansong/ee543/coding/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/nansong/ee543/coding/catkin_ws/install -G Unix Makefiles
