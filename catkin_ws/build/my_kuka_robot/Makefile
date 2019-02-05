@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -78,17 +67,6 @@ install/local/fast: install/local
 
 .PHONY : install/local/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
-
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -98,17 +76,6 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # Special rule for the target test
 test:
@@ -121,6 +88,17 @@ test/fast: test
 
 .PHONY : test/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -132,6 +110,28 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+
+.PHONY : install/strip/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -164,6 +164,111 @@ preinstall/fast:
 depend:
 	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_nodejs: my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+trajectory_msgs_generate_messages_nodejs/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build
+.PHONY : trajectory_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_lisp: my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_lisp
+
+# fast build rule for target.
+trajectory_msgs_generate_messages_lisp/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build
+.PHONY : trajectory_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_eus: my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_eus
+
+# fast build rule for target.
+trajectory_msgs_generate_messages_eus/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build.make my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build
+.PHONY : trajectory_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_cpp.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_cpp.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+my_kuka_robot_generate_messages_cpp: my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_cpp.dir/rule
+
+.PHONY : my_kuka_robot_generate_messages_cpp
+
+# fast build rule for target.
+my_kuka_robot_generate_messages_cpp/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_cpp.dir/build.make my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_cpp.dir/build
+.PHONY : my_kuka_robot_generate_messages_cpp/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_cpp: my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_cpp
+
+# fast build rule for target.
+trajectory_msgs_generate_messages_cpp/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build
+.PHONY : trajectory_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_cpp: my_kuka_robot/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_cpp
+
+# fast build rule for target.
+geometry_msgs_generate_messages_cpp/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make my_kuka_robot/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+.PHONY : geometry_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+octomap_msgs_generate_messages_nodejs: my_kuka_robot/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : octomap_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+octomap_msgs_generate_messages_nodejs/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/build
+.PHONY : octomap_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 my_kuka_robot/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
@@ -226,6 +331,21 @@ actionlib_msgs_generate_messages_nodejs/fast:
 .PHONY : actionlib_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
+my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_py: my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_py
+
+# fast build rule for target.
+trajectory_msgs_generate_messages_py/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build
+.PHONY : trajectory_msgs_generate_messages_py/fast
+
+# Convenience name for target.
 my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule:
 	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
 .PHONY : my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
@@ -254,6 +374,36 @@ actionlib_generate_messages_lisp: my_kuka_robot/CMakeFiles/actionlib_generate_me
 actionlib_generate_messages_lisp/fast:
 	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make my_kuka_robot/CMakeFiles/actionlib_generate_messages_lisp.dir/build
 .PHONY : actionlib_generate_messages_lisp/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+tf2_msgs_generate_messages_py: my_kuka_robot/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
+
+.PHONY : tf2_msgs_generate_messages_py
+
+# fast build rule for target.
+tf2_msgs_generate_messages_py/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/tf2_msgs_generate_messages_py.dir/build.make my_kuka_robot/CMakeFiles/tf2_msgs_generate_messages_py.dir/build
+.PHONY : tf2_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_lisp.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_lisp.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+moveit_msgs_generate_messages_lisp: my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : moveit_msgs_generate_messages_lisp
+
+# fast build rule for target.
+moveit_msgs_generate_messages_lisp/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_lisp.dir/build.make my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_lisp.dir/build
+.PHONY : moveit_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
 my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_eus.dir/rule:
@@ -301,6 +451,21 @@ rosgraph_msgs_generate_messages_py/fast:
 .PHONY : rosgraph_msgs_generate_messages_py/fast
 
 # Convenience name for target.
+my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_eus: my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_eus
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_eus/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+.PHONY : rosgraph_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
 my_kuka_robot/CMakeFiles/my_kuka_robot_genlisp.dir/rule:
 	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/my_kuka_robot_genlisp.dir/rule
 .PHONY : my_kuka_robot/CMakeFiles/my_kuka_robot_genlisp.dir/rule
@@ -314,246 +479,6 @@ my_kuka_robot_genlisp: my_kuka_robot/CMakeFiles/my_kuka_robot_genlisp.dir/rule
 my_kuka_robot_genlisp/fast:
 	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/my_kuka_robot_genlisp.dir/build.make my_kuka_robot/CMakeFiles/my_kuka_robot_genlisp.dir/build
 .PHONY : my_kuka_robot_genlisp/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_py: my_kuka_robot/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-.PHONY : roscpp_generate_messages_py
-
-# fast build rule for target.
-roscpp_generate_messages_py/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/roscpp_generate_messages_py.dir/build.make my_kuka_robot/CMakeFiles/roscpp_generate_messages_py.dir/build
-.PHONY : roscpp_generate_messages_py/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-graph_msgs_generate_messages_nodejs: my_kuka_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : graph_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-graph_msgs_generate_messages_nodejs/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/build
-.PHONY : graph_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/tf_generate_messages_nodejs.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/tf_generate_messages_nodejs.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/tf_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-tf_generate_messages_nodejs: my_kuka_robot/CMakeFiles/tf_generate_messages_nodejs.dir/rule
-
-.PHONY : tf_generate_messages_nodejs
-
-# fast build rule for target.
-tf_generate_messages_nodejs/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/tf_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/tf_generate_messages_nodejs.dir/build
-.PHONY : tf_generate_messages_nodejs/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-moveit_msgs_generate_messages_cpp: my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : moveit_msgs_generate_messages_cpp
-
-# fast build rule for target.
-moveit_msgs_generate_messages_cpp/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/build.make my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/build
-.PHONY : moveit_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_nodejs: my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_nodejs/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
-.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_lisp: my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_lisp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_lisp/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_py.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_py.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-moveit_msgs_generate_messages_py: my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_py.dir/rule
-
-.PHONY : moveit_msgs_generate_messages_py
-
-# fast build rule for target.
-moveit_msgs_generate_messages_py/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_py.dir/build.make my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_py.dir/build
-.PHONY : moveit_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_nodejs.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_nodejs.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-my_kuka_robot_generate_messages_nodejs: my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_nodejs.dir/rule
-
-.PHONY : my_kuka_robot_generate_messages_nodejs
-
-# fast build rule for target.
-my_kuka_robot_generate_messages_nodejs/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_nodejs.dir/build
-.PHONY : my_kuka_robot_generate_messages_nodejs/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_py: my_kuka_robot/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_py
-
-# fast build rule for target.
-sensor_msgs_generate_messages_py/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make my_kuka_robot/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
-.PHONY : sensor_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_nodejs: my_kuka_robot/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-
-.PHONY : roscpp_generate_messages_nodejs
-
-# fast build rule for target.
-roscpp_generate_messages_nodejs/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
-.PHONY : roscpp_generate_messages_nodejs/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-shape_msgs_generate_messages_cpp: my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : shape_msgs_generate_messages_cpp
-
-# fast build rule for target.
-shape_msgs_generate_messages_cpp/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_cpp.dir/build.make my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_cpp.dir/build
-.PHONY : shape_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-actionlib_msgs_generate_messages_lisp: my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : actionlib_msgs_generate_messages_lisp
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_lisp/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
-.PHONY : actionlib_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_eus.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_eus.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-visualization_msgs_generate_messages_eus: my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_eus.dir/rule
-
-.PHONY : visualization_msgs_generate_messages_eus
-
-# fast build rule for target.
-visualization_msgs_generate_messages_eus/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build.make my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build
-.PHONY : visualization_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/_catkin_empty_exported_target.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/_catkin_empty_exported_target.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-# Convenience name for target.
-_catkin_empty_exported_target: my_kuka_robot/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-.PHONY : _catkin_empty_exported_target
-
-# fast build rule for target.
-_catkin_empty_exported_target/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/_catkin_empty_exported_target.dir/build.make my_kuka_robot/CMakeFiles/_catkin_empty_exported_target.dir/build
-.PHONY : _catkin_empty_exported_target/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/my_kuka_robot_gencpp.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/my_kuka_robot_gencpp.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/my_kuka_robot_gencpp.dir/rule
-
-# Convenience name for target.
-my_kuka_robot_gencpp: my_kuka_robot/CMakeFiles/my_kuka_robot_gencpp.dir/rule
-
-.PHONY : my_kuka_robot_gencpp
-
-# fast build rule for target.
-my_kuka_robot_gencpp/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/my_kuka_robot_gencpp.dir/build.make my_kuka_robot/CMakeFiles/my_kuka_robot_gencpp.dir/build
-.PHONY : my_kuka_robot_gencpp/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_nodejs: my_kuka_robot/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : std_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-std_msgs_generate_messages_nodejs/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
-.PHONY : std_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule:
@@ -586,79 +511,94 @@ sensor_msgs_generate_messages_eus/fast:
 .PHONY : sensor_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+rosgraph_msgs_generate_messages_nodejs: my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 
-.PHONY : rosgraph_msgs_generate_messages_cpp
+.PHONY : rosgraph_msgs_generate_messages_nodejs
 
 # fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
+rosgraph_msgs_generate_messages_nodejs/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
+.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
-my_kuka_robot/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/rule
+my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-object_recognition_msgs_generate_messages_lisp: my_kuka_robot/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/rule
+moveit_msgs_generate_messages_cpp: my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : object_recognition_msgs_generate_messages_lisp
+.PHONY : moveit_msgs_generate_messages_cpp
 
 # fast build rule for target.
-object_recognition_msgs_generate_messages_lisp/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/build.make my_kuka_robot/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/build
-.PHONY : object_recognition_msgs_generate_messages_lisp/fast
+moveit_msgs_generate_messages_cpp/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/build.make my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_cpp.dir/build
+.PHONY : moveit_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
-my_kuka_robot/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_cpp: my_kuka_robot/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+shape_msgs_generate_messages_cpp: my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : geometry_msgs_generate_messages_cpp
+.PHONY : shape_msgs_generate_messages_cpp
 
 # fast build rule for target.
-geometry_msgs_generate_messages_cpp/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make my_kuka_robot/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
-.PHONY : geometry_msgs_generate_messages_cpp/fast
+shape_msgs_generate_messages_cpp/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_cpp.dir/build.make my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_cpp.dir/build
+.PHONY : shape_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
-my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
+my_kuka_robot/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-trajectory_msgs_generate_messages_cpp: my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
+sensor_msgs_generate_messages_py: my_kuka_robot/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 
-.PHONY : trajectory_msgs_generate_messages_cpp
+.PHONY : sensor_msgs_generate_messages_py
 
 # fast build rule for target.
-trajectory_msgs_generate_messages_cpp/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build
-.PHONY : trajectory_msgs_generate_messages_cpp/fast
+sensor_msgs_generate_messages_py/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make my_kuka_robot/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+.PHONY : sensor_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-my_kuka_robot/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/rule
+my_kuka_robot/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-octomap_msgs_generate_messages_nodejs: my_kuka_robot/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/rule
+roscpp_generate_messages_nodejs: my_kuka_robot/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
 
-.PHONY : octomap_msgs_generate_messages_nodejs
+.PHONY : roscpp_generate_messages_nodejs
 
 # fast build rule for target.
-octomap_msgs_generate_messages_nodejs/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/octomap_msgs_generate_messages_nodejs.dir/build
-.PHONY : octomap_msgs_generate_messages_nodejs/fast
+roscpp_generate_messages_nodejs/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
+.PHONY : roscpp_generate_messages_nodejs/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/my_kuka_robot_gencpp.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/my_kuka_robot_gencpp.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/my_kuka_robot_gencpp.dir/rule
+
+# Convenience name for target.
+my_kuka_robot_gencpp: my_kuka_robot/CMakeFiles/my_kuka_robot_gencpp.dir/rule
+
+.PHONY : my_kuka_robot_gencpp
+
+# fast build rule for target.
+my_kuka_robot_gencpp/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/my_kuka_robot_gencpp.dir/build.make my_kuka_robot/CMakeFiles/my_kuka_robot_gencpp.dir/build
+.PHONY : my_kuka_robot_gencpp/fast
 
 # Convenience name for target.
 my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_lisp.dir/rule:
@@ -689,6 +629,66 @@ visualization_msgs_generate_messages_nodejs: my_kuka_robot/CMakeFiles/visualizat
 visualization_msgs_generate_messages_nodejs/fast:
 	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build
 .PHONY : visualization_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_cpp: my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_cpp
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_cpp/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+object_recognition_msgs_generate_messages_lisp: my_kuka_robot/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : object_recognition_msgs_generate_messages_lisp
+
+# fast build rule for target.
+object_recognition_msgs_generate_messages_lisp/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/build.make my_kuka_robot/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/build
+.PHONY : object_recognition_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/_catkin_empty_exported_target.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/_catkin_empty_exported_target.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/_catkin_empty_exported_target.dir/rule
+
+# Convenience name for target.
+_catkin_empty_exported_target: my_kuka_robot/CMakeFiles/_catkin_empty_exported_target.dir/rule
+
+.PHONY : _catkin_empty_exported_target
+
+# fast build rule for target.
+_catkin_empty_exported_target/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/_catkin_empty_exported_target.dir/build.make my_kuka_robot/CMakeFiles/_catkin_empty_exported_target.dir/build
+.PHONY : _catkin_empty_exported_target/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_eus.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_eus.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+visualization_msgs_generate_messages_eus: my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_eus.dir/rule
+
+.PHONY : visualization_msgs_generate_messages_eus
+
+# fast build rule for target.
+visualization_msgs_generate_messages_eus/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build.make my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build
+.PHONY : visualization_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
 my_kuka_robot/CMakeFiles/tf_generate_messages_lisp.dir/rule:
@@ -736,81 +736,6 @@ roscpp_generate_messages_cpp/fast:
 .PHONY : roscpp_generate_messages_cpp/fast
 
 # Convenience name for target.
-my_kuka_robot/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-tf2_msgs_generate_messages_py: my_kuka_robot/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
-
-.PHONY : tf2_msgs_generate_messages_py
-
-# fast build rule for target.
-tf2_msgs_generate_messages_py/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/tf2_msgs_generate_messages_py.dir/build.make my_kuka_robot/CMakeFiles/tf2_msgs_generate_messages_py.dir/build
-.PHONY : tf2_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_lisp.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_lisp.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-moveit_msgs_generate_messages_lisp: my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : moveit_msgs_generate_messages_lisp
-
-# fast build rule for target.
-moveit_msgs_generate_messages_lisp/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_lisp.dir/build.make my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_lisp.dir/build
-.PHONY : moveit_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_eus: my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_eus
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_eus/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
-.PHONY : rosgraph_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_py: my_kuka_robot/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-.PHONY : std_msgs_generate_messages_py
-
-# fast build rule for target.
-std_msgs_generate_messages_py/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/std_msgs_generate_messages_py.dir/build.make my_kuka_robot/CMakeFiles/std_msgs_generate_messages_py.dir/build
-.PHONY : std_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-my_kuka_robot/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: my_kuka_robot/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : std_msgs_generate_messages_lisp
-
-# fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make my_kuka_robot/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
 my_kuka_robot/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
 	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
 .PHONY : my_kuka_robot/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
@@ -854,6 +779,21 @@ visualization_msgs_generate_messages_cpp: my_kuka_robot/CMakeFiles/visualization
 visualization_msgs_generate_messages_cpp/fast:
 	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/build.make my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/build
 .PHONY : visualization_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+visualization_msgs_generate_messages_py: my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
+
+.PHONY : visualization_msgs_generate_messages_py
+
+# fast build rule for target.
+visualization_msgs_generate_messages_py/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_py.dir/build.make my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_py.dir/build
+.PHONY : visualization_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 my_kuka_robot/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule:
@@ -901,21 +841,6 @@ _my_kuka_robot_generate_messages_check_deps_robot_IK/fast:
 .PHONY : _my_kuka_robot_generate_messages_check_deps_robot_IK/fast
 
 # Convenience name for target.
-my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-visualization_msgs_generate_messages_py: my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
-
-.PHONY : visualization_msgs_generate_messages_py
-
-# fast build rule for target.
-visualization_msgs_generate_messages_py/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_py.dir/build.make my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_py.dir/build
-.PHONY : visualization_msgs_generate_messages_py/fast
-
-# Convenience name for target.
 my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_py.dir/rule:
 	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_py.dir/rule
 .PHONY : my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_py.dir/rule
@@ -929,6 +854,36 @@ shape_msgs_generate_messages_py: my_kuka_robot/CMakeFiles/shape_msgs_generate_me
 shape_msgs_generate_messages_py/fast:
 	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_py.dir/build.make my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_py.dir/build
 .PHONY : shape_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_lisp: my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : actionlib_msgs_generate_messages_lisp
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_lisp/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
+.PHONY : actionlib_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+visualization_msgs_generate_messages_lisp: my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : visualization_msgs_generate_messages_lisp
+
+# fast build rule for target.
+visualization_msgs_generate_messages_lisp/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build.make my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build
+.PHONY : visualization_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
 my_kuka_robot/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
@@ -976,94 +931,94 @@ my_kuka_robot_generate_messages_py/fast:
 .PHONY : my_kuka_robot_generate_messages_py/fast
 
 # Convenience name for target.
-my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
+my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-visualization_msgs_generate_messages_lisp: my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
+rosgraph_msgs_generate_messages_lisp: my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
 
-.PHONY : visualization_msgs_generate_messages_lisp
+.PHONY : rosgraph_msgs_generate_messages_lisp
 
 # fast build rule for target.
-visualization_msgs_generate_messages_lisp/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build.make my_kuka_robot/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build
-.PHONY : visualization_msgs_generate_messages_lisp/fast
+rosgraph_msgs_generate_messages_lisp/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make my_kuka_robot/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
-my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_py.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_py.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-trajectory_msgs_generate_messages_eus: my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+moveit_msgs_generate_messages_py: my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_py.dir/rule
 
-.PHONY : trajectory_msgs_generate_messages_eus
+.PHONY : moveit_msgs_generate_messages_py
 
 # fast build rule for target.
-trajectory_msgs_generate_messages_eus/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build.make my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build
-.PHONY : trajectory_msgs_generate_messages_eus/fast
+moveit_msgs_generate_messages_py/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_py.dir/build.make my_kuka_robot/CMakeFiles/moveit_msgs_generate_messages_py.dir/build
+.PHONY : moveit_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_cpp.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_cpp.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_cpp.dir/rule
+my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_nodejs.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_nodejs.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-my_kuka_robot_generate_messages_cpp: my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_cpp.dir/rule
+my_kuka_robot_generate_messages_nodejs: my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_nodejs.dir/rule
 
-.PHONY : my_kuka_robot_generate_messages_cpp
+.PHONY : my_kuka_robot_generate_messages_nodejs
 
 # fast build rule for target.
-my_kuka_robot_generate_messages_cpp/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_cpp.dir/build.make my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_cpp.dir/build
-.PHONY : my_kuka_robot_generate_messages_cpp/fast
+my_kuka_robot_generate_messages_nodejs/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages_nodejs.dir/build
+.PHONY : my_kuka_robot_generate_messages_nodejs/fast
 
 # Convenience name for target.
-my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
+my_kuka_robot/CMakeFiles/roscpp_generate_messages_py.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/roscpp_generate_messages_py.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/roscpp_generate_messages_py.dir/rule
 
 # Convenience name for target.
-trajectory_msgs_generate_messages_lisp: my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
+roscpp_generate_messages_py: my_kuka_robot/CMakeFiles/roscpp_generate_messages_py.dir/rule
 
-.PHONY : trajectory_msgs_generate_messages_lisp
+.PHONY : roscpp_generate_messages_py
 
 # fast build rule for target.
-trajectory_msgs_generate_messages_lisp/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build
-.PHONY : trajectory_msgs_generate_messages_lisp/fast
+roscpp_generate_messages_py/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/roscpp_generate_messages_py.dir/build.make my_kuka_robot/CMakeFiles/roscpp_generate_messages_py.dir/build
+.PHONY : roscpp_generate_messages_py/fast
 
 # Convenience name for target.
-my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
+my_kuka_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-trajectory_msgs_generate_messages_nodejs: my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
+graph_msgs_generate_messages_nodejs: my_kuka_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/rule
 
-.PHONY : trajectory_msgs_generate_messages_nodejs
+.PHONY : graph_msgs_generate_messages_nodejs
 
 # fast build rule for target.
-trajectory_msgs_generate_messages_nodejs/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build
-.PHONY : trajectory_msgs_generate_messages_nodejs/fast
+graph_msgs_generate_messages_nodejs/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/graph_msgs_generate_messages_nodejs.dir/build
+.PHONY : graph_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
-my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
+my_kuka_robot/CMakeFiles/tf_generate_messages_nodejs.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/tf_generate_messages_nodejs.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/tf_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-trajectory_msgs_generate_messages_py: my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
+tf_generate_messages_nodejs: my_kuka_robot/CMakeFiles/tf_generate_messages_nodejs.dir/rule
 
-.PHONY : trajectory_msgs_generate_messages_py
+.PHONY : tf_generate_messages_nodejs
 
 # fast build rule for target.
-trajectory_msgs_generate_messages_py/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make my_kuka_robot/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build
-.PHONY : trajectory_msgs_generate_messages_py/fast
+tf_generate_messages_nodejs/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/tf_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/tf_generate_messages_nodejs.dir/build
+.PHONY : tf_generate_messages_nodejs/fast
 
 # Convenience name for target.
 my_kuka_robot/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule:
@@ -1261,21 +1216,6 @@ moveit_ros_manipulation_gencfg/fast:
 .PHONY : moveit_ros_manipulation_gencfg/fast
 
 # Convenience name for target.
-my_kuka_robot/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: my_kuka_robot/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : std_msgs_generate_messages_cpp
-
-# fast build rule for target.
-std_msgs_generate_messages_cpp/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make my_kuka_robot/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-.PHONY : std_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
 my_kuka_robot/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
 .PHONY : my_kuka_robot/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
@@ -1411,21 +1351,6 @@ my_kuka_robot_gennodejs/fast:
 .PHONY : my_kuka_robot_gennodejs/fast
 
 # Convenience name for target.
-my_kuka_robot/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_eus: my_kuka_robot/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-.PHONY : std_msgs_generate_messages_eus
-
-# fast build rule for target.
-std_msgs_generate_messages_eus/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make my_kuka_robot/CMakeFiles/std_msgs_generate_messages_eus.dir/build
-.PHONY : std_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
 my_kuka_robot/CMakeFiles/actionlib_generate_messages_eus.dir/rule:
 	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/actionlib_generate_messages_eus.dir/rule
 .PHONY : my_kuka_robot/CMakeFiles/actionlib_generate_messages_eus.dir/rule
@@ -1471,21 +1396,6 @@ tf2_msgs_generate_messages_eus/fast:
 .PHONY : tf2_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
-.PHONY : my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-actionlib_msgs_generate_messages_py: my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
-
-.PHONY : actionlib_msgs_generate_messages_py
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_py/fast:
-	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
-.PHONY : actionlib_msgs_generate_messages_py/fast
-
-# Convenience name for target.
 my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_nodejs.dir/rule
 .PHONY : my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_nodejs.dir/rule
@@ -1499,6 +1409,21 @@ shape_msgs_generate_messages_nodejs: my_kuka_robot/CMakeFiles/shape_msgs_generat
 shape_msgs_generate_messages_nodejs/fast:
 	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_nodejs.dir/build.make my_kuka_robot/CMakeFiles/shape_msgs_generate_messages_nodejs.dir/build
 .PHONY : shape_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
+.PHONY : my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_py: my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
+
+.PHONY : actionlib_msgs_generate_messages_py
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_py/fast:
+	cd /home/nansong/Dropbox/uwcourse/ee543/coding/catkin_ws/build && $(MAKE) -f my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make my_kuka_robot/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
+.PHONY : actionlib_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 my_kuka_robot/CMakeFiles/my_kuka_robot_generate_messages.dir/rule:
@@ -1611,71 +1536,65 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
+	@echo "... trajectory_msgs_generate_messages_nodejs"
 	@echo "... install/local"
-	@echo "... install/strip"
+	@echo "... trajectory_msgs_generate_messages_lisp"
+	@echo "... trajectory_msgs_generate_messages_eus"
+	@echo "... my_kuka_robot_generate_messages_cpp"
+	@echo "... trajectory_msgs_generate_messages_cpp"
+	@echo "... geometry_msgs_generate_messages_cpp"
+	@echo "... octomap_msgs_generate_messages_nodejs"
 	@echo "... sensor_msgs_generate_messages_lisp"
 	@echo "... object_recognition_msgs_generate_messages_py"
 	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... actionlib_msgs_generate_messages_nodejs"
+	@echo "... trajectory_msgs_generate_messages_py"
 	@echo "... actionlib_msgs_generate_messages_eus"
 	@echo "... actionlib_generate_messages_lisp"
+	@echo "... tf2_msgs_generate_messages_py"
+	@echo "... moveit_msgs_generate_messages_lisp"
 	@echo "... moveit_msgs_generate_messages_eus"
 	@echo "... actionlib_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_py"
+	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... my_kuka_robot_genlisp"
-	@echo "... roscpp_generate_messages_py"
-	@echo "... graph_msgs_generate_messages_nodejs"
-	@echo "... tf_generate_messages_nodejs"
-	@echo "... moveit_msgs_generate_messages_cpp"
+	@echo "... actionlib_msgs_generate_messages_cpp"
+	@echo "... sensor_msgs_generate_messages_eus"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
-	@echo "... rosgraph_msgs_generate_messages_lisp"
-	@echo "... moveit_msgs_generate_messages_py"
-	@echo "... my_kuka_robot_generate_messages_nodejs"
+	@echo "... moveit_msgs_generate_messages_cpp"
+	@echo "... shape_msgs_generate_messages_cpp"
 	@echo "... list_install_components"
 	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... roscpp_generate_messages_nodejs"
-	@echo "... shape_msgs_generate_messages_cpp"
-	@echo "... actionlib_msgs_generate_messages_lisp"
-	@echo "... visualization_msgs_generate_messages_eus"
-	@echo "... _catkin_empty_exported_target"
 	@echo "... my_kuka_robot_gencpp"
-	@echo "... std_msgs_generate_messages_nodejs"
-	@echo "... actionlib_msgs_generate_messages_cpp"
-	@echo "... sensor_msgs_generate_messages_eus"
-	@echo "... rosgraph_msgs_generate_messages_cpp"
-	@echo "... object_recognition_msgs_generate_messages_lisp"
-	@echo "... geometry_msgs_generate_messages_cpp"
-	@echo "... trajectory_msgs_generate_messages_cpp"
-	@echo "... octomap_msgs_generate_messages_nodejs"
 	@echo "... shape_msgs_generate_messages_lisp"
 	@echo "... visualization_msgs_generate_messages_nodejs"
+	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... object_recognition_msgs_generate_messages_lisp"
+	@echo "... _catkin_empty_exported_target"
+	@echo "... visualization_msgs_generate_messages_eus"
 	@echo "... tf_generate_messages_lisp"
 	@echo "... moveit_msgs_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_cpp"
-	@echo "... tf2_msgs_generate_messages_py"
-	@echo "... moveit_msgs_generate_messages_lisp"
-	@echo "... rosgraph_msgs_generate_messages_eus"
-	@echo "... std_msgs_generate_messages_py"
-	@echo "... edit_cache"
-	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... visualization_msgs_generate_messages_cpp"
+	@echo "... visualization_msgs_generate_messages_py"
 	@echo "... geometry_msgs_generate_messages_eus"
 	@echo "... geometry_msgs_generate_messages_nodejs"
 	@echo "... _my_kuka_robot_generate_messages_check_deps_robot_IK"
-	@echo "... visualization_msgs_generate_messages_py"
 	@echo "... shape_msgs_generate_messages_py"
+	@echo "... actionlib_msgs_generate_messages_lisp"
+	@echo "... visualization_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... _my_kuka_robot_generate_messages_check_deps_robot_FK"
 	@echo "... my_kuka_robot_generate_messages_py"
-	@echo "... visualization_msgs_generate_messages_lisp"
-	@echo "... trajectory_msgs_generate_messages_eus"
-	@echo "... my_kuka_robot_generate_messages_cpp"
-	@echo "... trajectory_msgs_generate_messages_lisp"
-	@echo "... trajectory_msgs_generate_messages_nodejs"
-	@echo "... trajectory_msgs_generate_messages_py"
+	@echo "... rosgraph_msgs_generate_messages_lisp"
+	@echo "... moveit_msgs_generate_messages_py"
+	@echo "... my_kuka_robot_generate_messages_nodejs"
+	@echo "... roscpp_generate_messages_py"
+	@echo "... graph_msgs_generate_messages_nodejs"
+	@echo "... tf_generate_messages_nodejs"
 	@echo "... actionlib_generate_messages_nodejs"
 	@echo "... graph_msgs_generate_messages_lisp"
 	@echo "... object_recognition_msgs_generate_messages_cpp"
@@ -1689,7 +1608,6 @@ help:
 	@echo "... shape_msgs_generate_messages_eus"
 	@echo "... moveit_ros_planning_gencfg"
 	@echo "... moveit_ros_manipulation_gencfg"
-	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... sensor_msgs_generate_messages_nodejs"
 	@echo "... graph_msgs_generate_messages_cpp"
 	@echo "... actionlib_generate_messages_py"
@@ -1700,12 +1618,12 @@ help:
 	@echo "... tf_generate_messages_cpp"
 	@echo "... tf_generate_messages_eus"
 	@echo "... my_kuka_robot_gennodejs"
-	@echo "... std_msgs_generate_messages_eus"
+	@echo "... rebuild_cache"
 	@echo "... actionlib_generate_messages_eus"
 	@echo "... tf2_msgs_generate_messages_cpp"
 	@echo "... tf2_msgs_generate_messages_eus"
-	@echo "... actionlib_msgs_generate_messages_py"
 	@echo "... shape_msgs_generate_messages_nodejs"
+	@echo "... actionlib_msgs_generate_messages_py"
 	@echo "... my_kuka_robot_generate_messages"
 	@echo "... tf2_msgs_generate_messages_lisp"
 	@echo "... my_kuka_robot_genpy"
@@ -1714,6 +1632,8 @@ help:
 	@echo "... install"
 	@echo "... my_kuka_robot_geneus"
 	@echo "... my_kuka_robot_generate_messages_lisp"
+	@echo "... install/strip"
+	@echo "... edit_cache"
 .PHONY : help
 
 
