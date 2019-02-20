@@ -8,6 +8,7 @@ import time
 import rospy
 import numpy as np
 import matplotlib.pyplot as plt
+import copy
 
 from my_kuka_robot.srv import *
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
@@ -183,6 +184,26 @@ class MyKukaSolver(object):
         return result
 
     def performIK(self, pose):
+
+        def ComputeTriangle(A,B,C):
+            return (B**2+C**2-A**2)/(2*B*C)        
+        
+        def solveTriangle(A,B,C):
+            print(np.arccos(0.5))
+            c1 = ComputeTriangle(A,B,C)
+            c2 = ComputeTriangle(B,A,C)
+            c3 = ComputeTriangle(C,A,B)
+            print("c1,c2,c3:",c1,c2,c3)
+            print("c1 type:", type(c1))
+            print("c2 type:", type(c2))
+            print("c3 type:", type(c3))
+            alpha = np.arccos(float(c1))
+            beta = np.arccos(float(c2))
+            gamma = np.arccos(float(c3))
+            # beta = np.arccos(c2)
+            # gamma = np.arccos(c3)
+            return alpha, beta, gamma
+
         # Step 0: Extract end-effector position and orientation from request
         px = pose.position.x
         py = pose.position.y
@@ -197,21 +218,19 @@ class MyKukaSolver(object):
         R0_g = tf.transformations.quaternion_matrix(p_quat)
         R0_g = R0_g[0:3, 0:3]  
         z_g = np.dot(self.R_corr.tolist(), ([[0], [0], [1]]))
+        print("this is zg", z_g)
 
         # TODO: find wrist center position rwc_0
         #	hint1: we want rwc_0 to be a Matrix type, and we can cast data to matrix type by doing Matrix(data)
         #	hint2: the function np.dot does matrix multiplication for us.
         
-        rwc_0 = Matrix(pg_0 - (d_g * (np.dot(R0_g, z_g)))# something
-
-        debug_log("        Wrist Center : {}".format(rwc_0.tolist()))
-
-
+        rwc_0 = Matrix(pg_0 - (d_g * (np.dot(R0_g, z_g))))# something
+        debug_log("Wrist Center : {}".format(rwc_0.tolist()))
         # Step 2: Calculate theta1 given Owc
-        # TODO: find theta1
-        print( "Haven't evalf", atan2(rwc_0[1], z_g) )
-        theta1 = atan2(rwc_0[1], z_g).evalf()
-        
+        # TODO: find theta1 
+        theta1 = atan2(rwc_0[1], rwc_0[0]).evalf()
+        print("theta1:",theta1)
+
         # Step 3: Define triangle (O2, O3, Owc)
         pO2_0 = Matrix([[s[a1]], [0], [s[d1]]])
         pO2_0 = rot_z(theta1)* pO2_0
@@ -221,7 +240,11 @@ class MyKukaSolver(object):
         beta_prime = atan2(s[a3], s[d4])
 
         X2_prime = self.T0_2.subs({th1:theta1, th2:0}).dot([[1], [0], [0], [0]])
+        print("X2_prime:",X2_prime)
+        X2_prime = X2_prime[0:3]
         z2_prime = self.T0_2.subs({th1:theta1}).dot([[0], [0], [1], [0]])
+        print("z2_prime:",z2_prime)
+        z2_prime = z2_prime[0:3]
 
         # TODO: find the 3 edge lengths, directions and angles for this triangle
         # 	hint1: all 3 edge lengths can be found with either s[index] or information above
@@ -237,13 +260,19 @@ class MyKukaSolver(object):
         A = s[a2]
         B = pO2towc_0.norm() 
         C = np.sqrt(s[a3]**2+s[d4]**2)
+        print("A type:", type(A))
+        print("B type:", type(B))
+        print("C type:", type(C))
+        print("ABC:",A,B,C)
         alpha, beta, gamma = solveTriangle(A,B,C)
+        print("alpha,beta,gamma:",alpha,beta,gamma)
         b = pO2towc_0.normalized()  
         tmp = copy.deepcopy(pO2towc_0)
-        tmp = tmp.insert(3,Matrix([[0]]))
-        a = tf.transformations.rotation_matrix(-gamma, z2_prime).dot(tmp)[0:3,:].normalized() 
+        tmp = tmp.row_insert(3,Matrix([[0]]))
+        a = (tf.transformations.rotation_matrix(-gamma, z2_prime)*tmp).normalized()[0:3]
+        print("a type:", type(a))
         # TODO: find pO3
-        pO3 = pO2_0 + a*A# something
+        pO3 = pO2_0 + np.array(a)*float(A)# something
         debug_log("        Link 3 position : {}".format(pO3.tolist()))
         c = (rwc_0 - pO3).normalized()
 
@@ -253,15 +282,14 @@ class MyKukaSolver(object):
         #	dot(v1,v2) = |v1|*|v2|*cos(theta)
         # 	so the angle theta between the two vectors can be depricted as: 
         #	theta = arccos(dot(v1,v2)/(|v1|*|v2|))
-        theta2 = arccos(dot(X2_prime[0:3,:],a))# something
-        
 
+        theta2 = np.arccos(float(np.dot(X2_prime,a)))# something
+        
         # Step 5: Find theta3 from triangle
         # TODO: find theta3 
         # 	hint: you can use (something).evalf() to ensure precision
-        theta3 = # (something).evalf()
-
-
+        # what's the difference?
+        theta3 = (pi/2-beta-beta_prime).evalf()# (something).evalf()
         # ---------------------(2) WC to end-effector---------------------
         # Step 1: Symbolic form of R3_6 (skip: try offline)
         # You can try doing "(T3_4*T4_5*T5_6)[:3,:3]" and see result.
@@ -270,28 +298,41 @@ class MyKukaSolver(object):
         R0_3 = self.T0_3[0:3,0:3]
         R3_6 = R0_3.transpose()* Matrix(R0_g)*self.R_corr.transpose()
         R3_6 = R3_6.subs({th1: theta1, th2:theta2, th3: theta3})
-
+        # R3_6 = float(R3_6)
 
         # Step 3: solve for theta4, theta5 and theta6
         # TODO: in the case of sin(theta5) > 0
         #       hint: make use of "tan2(,).evalf()" function and "R3_6[index]"
-        theta4 = # something
-        theta6 = # something
-        theta5 = # something
+
+        if R3_6[1,2] == 1 :
+            debug_log("s5 = 0")
+            sum46 = atan2(R3_6[0,1], R3_6[2,1])
+            theta4, theta6 = sum46/2, sum46/2
+            theta5 = 0
+        elif R3_6 == -1 :
+            debug_log("s5 = 0")
+            diff46 = atan2(R3_6[0,1], -R3_6[2,1])
+            theta4, theta6 = 0, diff46
+            theta5 = pi
+        else:
+            theta4 = atan2(R3_6[2,2],-R3_6[0,2])# something
+            theta6 = atan2(-R3_6[1,1], R3_6[1,0])# something
+            theta5 = atan2(sqrt(R3_6[0,2]**2+R3_6[2,2]**2), R3_6[1,2])# something
+            if sin(theta5)>0:
+                debug_log("s5 > 0")
+            elif sin(theta5)<0:
+                theta4 = atan2(-R3_6[2,2], R3_6[0,2])# something
+                theta6 = atan2(R3_6[1,1], -R3_6[1,0])# something
+                theta5 = atan2(-sqrt(R3_6[0,2]**2+R3_6[2,2]**2), R3_6[1,2])# something
+                if sin(theta5) < 0:
+                    debug_log("s5 < 0")
+            
+
 
 
         # TODO (optional):  in the case of sin(theta5) = 0 ?
         #		    in the case of sin(theta5) < 0 ?
         # (solve for theta4,5,6 in these two situations for extra credit)
-        
-        def solveTriangle(A,B,C):
-            alpha = np.arccos(ComputeTriangle(A,B,C))
-            beta = np.arccos(ComputeTriangle(B,A,C))
-            gamma = np.arccos(ComputeTriangle(C,A,B))
-            return alpha, beta, gamma
-
-        def ComputeTriangle(A,B,C):
-            return (B**2+C**2-A**2)/(2*B*C)
 
         # Step 4: Sanity check
         def reduceEffectiveRange(theta, name):
@@ -305,6 +346,9 @@ class MyKukaSolver(object):
                 return theta
 
         def angleCorrection(theta, old_theta):
+            """
+                what does this func do?
+            """
             d = theta - old_theta
             if d > np.pi:
                 return theta - 2*np.pi
@@ -312,7 +356,6 @@ class MyKukaSolver(object):
                 return theta + 2*np.pi
             else:
                 return theta
-
 
         theta4 = reduceEffectiveRange(theta4, "theta4")
         theta6 = reduceEffectiveRange(theta6, "theta6")
@@ -331,33 +374,33 @@ class MyKukaSolver(object):
 
     def verifyIK(self, pose, joint_trajectory_point):
 
-	debug_log("    verify IK result:")
+    	debug_log("    verify IK result:")
 
-	# check result in joint limit range
-	theta = joint_trajectory_point.positions
-    checkInRange(rtod(theta[0]), -185, 185, "theta1")
-    checkInRange(rtod(theta[1]),  -45,  85, "theta2")
-    checkInRange(rtod(theta[2]), -210,  65, "theta3")
-    checkInRange(rtod(theta[3]), -350, 350, "theta4")
-    checkInRange(rtod(theta[4]), -125, 125, "theta5")
-    checkInRange(rtod(theta[5]), -350, 350, "theta6")
+    	# check result in joint limit range
+    	theta = joint_trajectory_point.positions
+        checkInRange(rtod(theta[0]), -185, 185, "theta1")
+        checkInRange(rtod(theta[1]),  -45,  85, "theta2")
+        checkInRange(rtod(theta[2]), -210,  65, "theta3")
+        checkInRange(rtod(theta[3]), -350, 350, "theta4")
+        checkInRange(rtod(theta[4]), -125, 125, "theta5")
+        checkInRange(rtod(theta[5]), -350, 350, "theta6")
 
-	# extract computed position
-	result  = self.performFK([theta[0], theta[1], theta[2], theta[3], theta[4], theta[5]])
-	computed_pos = Matrix([[result.position.x], [result.position.y], [result.position.z]])
+    	# extract computed position
+        result  = self.performFK([theta[0], theta[1], theta[2], theta[3], theta[4], theta[5]])
+        computed_pos = Matrix([[result.position.x], [result.position.y], [result.position.z]])
 
-    # extract requested position
-    requested_pos = Matrix([[pose.position.x], [pose.position.y], [pose.position.z]])
+        # extract requested position
+        requested_pos = Matrix([[pose.position.x], [pose.position.y], [pose.position.z]])
 
-	# error analysis
-	error = (requested_pos - computed_pos).norm()
+    	# error analysis
+        error = (requested_pos - computed_pos).norm()
 
-	# debug log
-    debug_log("        EE position received FK: {}".format(requested_pos.tolist()))
-    debug_log("        EE position after FK :   {}".format(computed_pos.tolist()))
-    debug_log("        EE Error : {}".format(error))
+    	# debug log
+        debug_log("        EE position received FK: {}".format(requested_pos.tolist()))
+        debug_log("        EE position after FK :   {}".format(computed_pos.tolist()))
+        debug_log("        EE Error : {}".format(error))
 
-	return error
+        return error
 
     def handle_calculate_FK(self, req):
         if len(req.points) < 1: 

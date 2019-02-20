@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 import os
 import sys
@@ -5,6 +6,7 @@ import time
 import numpy as np
 import matplotlib.pyplot as plt
 import copy
+import tf
 #from sympy import mpmath
 import mpmath
 from sympy import *
@@ -29,21 +31,49 @@ def createMatrix(al, a, th, d):
 
     return mat
 
-T0_1 = createMatrix(al0,a0, th1, d1)
-T0_1 = T0_1.subs(s)
-# TODO: Do the same for the remaining parts
-T1_2 = createMatrix(al1,a1, th2, d2).subs(s)
-T0_2 = simplify(np.dot(T0_1, T1_2)) # base_link to link 2
-theta1 = pi/2
-X2_prime = T0_2.subs({th1:theta1, th2:0}).dot([[1], [0], [0], [0]])
-print(X2_prime)
-pO2_0 = Matrix([[s[a1]], [0], [s[d1]]])
-t = copy.deepcopy(pO2_0)
-t[0,0] = 100
-print(t)
-print("insert:"+ str(pO2_0.row_insert(3,Matrix([[0]]))))
-print("pO2_0L:"+str(pO2_0))
-#print(a1.subs(s))
-print(a1.evalf(subs=s))
-#print( pO2_0.normalized() )
+def ComputeTriangle(A,B,C):
+    return (B**2+C**2-A**2)/(2*B*C)        
+
+def solveTriangle(A,B,C):
+    alpha = np.arccos(ComputeTriangle(A,B,C))
+    beta = np.arccos(ComputeTriangle(B,A,C))
+    gamma = np.arccos(ComputeTriangle(C,A,B))
+    return alpha, beta, gamma
+
+
+
+A, B, C = 1.25, 1.6100576998084, 1.5009716852759081
+alpha, beta, gamma = solveTriangle(A,B,C)
+z2_prime = [0.01827805, -0.9998329,0]
+print("alpha,beta,gamma:",alpha,beta,gamma)
+tmp = Matrix([[1],[0],[0],[0]])
+# a = np.dot(Matrix(tf.transformations.rotation_matrix(-gamma, z2_prime)),tmp)
+a = (Matrix(tf.transformations.rotation_matrix(-gamma, z2_prime))*tmp)[0:3]
+X2_prime = [1,2,3]
+print(np.dot(a,X2_prime))
+print(sqrt(1))
+
+
+
+
+print(a)
+
+# T0_1 = createMatrix(al0,a0, th1, d1)
+# T0_1 = T0_1.subs(s)
+# # TODO: Do the same for the remaining parts
+# T1_2 = createMatrix(al1,a1, th2, d2).subs(s)
+# T0_2 = simplify(T0_1*T1_2) # base_link to link 2
+# print(T0_2)
+# theta1 = pi/2
+# X2_prime = T0_2.subs({th1:theta1, th2:0}).dot([[1], [0], [0], [0]])
+# print(X2_prime)
+# pO2_0 = Matrix([[s[a1]], [0], [s[d1]]])
+# t = copy.deepcopy(pO2_0)
+# t[0,0] = 100
+# print(t)
+# print("insert:"+ str(pO2_0.row_insert(3,Matrix([[0]]))))
+# print("pO2_0L:"+str(pO2_0))
+# #print(a1.subs(s))
+# print(a1.evalf(subs=s))
+# #print( pO2_0.normalized() )
 
