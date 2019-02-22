@@ -90,7 +90,7 @@ class MyKukaSolver(object):
         tmp = zeros(4,4)
         tmp[0:3,0:3] = simplify(rot_z(pi)*rot_y(-pi/2))
         tmp[3,3] = 1
-        print(tmp)
+        # print(tmp)
         self.T0_1 = createMatrix(al0,a0, th1, d1)
         self.T0_1 = self.T0_1.subs(s)
         # TODO: Do the same for the remaining parts
@@ -189,14 +189,14 @@ class MyKukaSolver(object):
             return (B**2+C**2-A**2)/(2*B*C)        
         
         def solveTriangle(A,B,C):
-            print(np.arccos(0.5))
+            # print(np.arccos(0.5))
             c1 = ComputeTriangle(A,B,C)
             c2 = ComputeTriangle(B,A,C)
             c3 = ComputeTriangle(C,A,B)
-            print("c1,c2,c3:",c1,c2,c3)
-            print("c1 type:", type(c1))
-            print("c2 type:", type(c2))
-            print("c3 type:", type(c3))
+            # print("c1,c2,c3:",c1,c2,c3)
+            # print("c1 type:", type(c1))
+            # print("c2 type:", type(c2))
+            # print("c3 type:", type(c3))
             alpha = np.arccos(float(c1))
             beta = np.arccos(float(c2))
             gamma = np.arccos(float(c3))
@@ -218,7 +218,7 @@ class MyKukaSolver(object):
         R0_g = tf.transformations.quaternion_matrix(p_quat)
         R0_g = R0_g[0:3, 0:3]  
         z_g = np.dot(self.R_corr.tolist(), ([[0], [0], [1]]))
-        print("this is zg", z_g)
+        # print("this is zg", z_g)
 
         # TODO: find wrist center position rwc_0
         #	hint1: we want rwc_0 to be a Matrix type, and we can cast data to matrix type by doing Matrix(data)
@@ -229,7 +229,7 @@ class MyKukaSolver(object):
         # Step 2: Calculate theta1 given Owc
         # TODO: find theta1 
         theta1 = atan2(rwc_0[1], rwc_0[0]).evalf()
-        print("theta1:",theta1)
+        # print("theta1:",theta1)
 
         # Step 3: Define triangle (O2, O3, Owc)
         pO2_0 = Matrix([[s[a1]], [0], [s[d1]]])
@@ -240,10 +240,10 @@ class MyKukaSolver(object):
         beta_prime = atan2(s[a3], s[d4])
 
         X2_prime = self.T0_2.subs({th1:theta1, th2:0}).dot([[1], [0], [0], [0]])
-        print("X2_prime:",X2_prime)
+        # print("X2_prime:",X2_prime)
         X2_prime = X2_prime[0:3]
         z2_prime = self.T0_2.subs({th1:theta1}).dot([[0], [0], [1], [0]])
-        print("z2_prime:",z2_prime)
+        # print("z2_prime:",z2_prime)
         z2_prime = z2_prime[0:3]
 
         # TODO: find the 3 edge lengths, directions and angles for this triangle
@@ -260,17 +260,17 @@ class MyKukaSolver(object):
         A = s[a2]
         B = pO2towc_0.norm() 
         C = np.sqrt(s[a3]**2+s[d4]**2)
-        print("A type:", type(A))
-        print("B type:", type(B))
-        print("C type:", type(C))
-        print("ABC:",A,B,C)
+        # print("A type:", type(A))
+        # print("B type:", type(B))
+        # print("C type:", type(C))
+        # print("ABC:",A,B,C)
         alpha, beta, gamma = solveTriangle(A,B,C)
-        print("alpha,beta,gamma:",alpha,beta,gamma)
+        # print("alpha,beta,gamma:",alpha,beta,gamma)
         b = pO2towc_0.normalized()  
         tmp = copy.deepcopy(pO2towc_0)
         tmp = tmp.row_insert(3,Matrix([[0]]))
         a = (tf.transformations.rotation_matrix(-gamma, z2_prime)*tmp).normalized()[0:3]
-        print("a type:", type(a))
+        # print("a type:", type(a))
         # TODO: find pO3
         pO3 = pO2_0 + np.array(a)*float(A)# something
         debug_log("        Link 3 position : {}".format(pO3.tolist()))
@@ -303,32 +303,32 @@ class MyKukaSolver(object):
         # Step 3: solve for theta4, theta5 and theta6
         # TODO: in the case of sin(theta5) > 0
         #       hint: make use of "tan2(,).evalf()" function and "R3_6[index]"
-
+        print(R3_6)
         if R3_6[1,2] == 1 :
             debug_log("s5 = 0")
             sum46 = atan2(R3_6[0,1], R3_6[2,1])
             theta4, theta6 = sum46/2, sum46/2
             theta5 = 0
-        elif R3_6 == -1 :
+        elif R3_6[1,2] == -1 :
             debug_log("s5 = 0")
             diff46 = atan2(R3_6[0,1], -R3_6[2,1])
             theta4, theta6 = 0, diff46
             theta5 = pi
         else:
-            theta4 = atan2(R3_6[2,2],-R3_6[0,2])# something
-            theta6 = atan2(-R3_6[1,1], R3_6[1,0])# something
-            theta5 = atan2(sqrt(R3_6[0,2]**2+R3_6[2,2]**2), R3_6[1,2])# something
-            if sin(theta5)>0:
-                debug_log("s5 > 0")
+            coe = -1
+            theta4 = atan2(coe*R3_6[2,2],-coe*R3_6[0,2])# something
+            theta6 = atan2(-coe*R3_6[1,1], coe*R3_6[1,0])# something
+            theta5 = atan2(coe*sqrt(R3_6[0,2]**2+R3_6[2,2]**2), R3_6[1,2])# something
+            print(sin(theta5))
+            if sin(theta5)<0:
+                # rospy.logerr("LHS:"+str(cos(theta4)**2+(cos(theta4)*the)**2))
+                rospy.logerr("s5 < 0")
             elif sin(theta5)<0:
-                theta4 = atan2(-R3_6[2,2], R3_6[0,2])# something
-                theta6 = atan2(R3_6[1,1], -R3_6[1,0])# something
-                theta5 = atan2(-sqrt(R3_6[0,2]**2+R3_6[2,2]**2), R3_6[1,2])# something
-                if sin(theta5) < 0:
-                    debug_log("s5 < 0")
-            
-
-
+                theta4 = atan2(-coe*R3_6[2,2], coe*R3_6[0,2])# something
+                theta6 = atan2(coe*R3_6[1,1], -coe*R3_6[1,0])# something
+                theta5 = atan2(-coe*sqrt(R3_6[0,2]**2+R3_6[2,2]**2), R3_6[1,2])# something
+                if sin(theta5) > 0:
+                    rospy.logerr("s5 > 0")
 
         # TODO (optional):  in the case of sin(theta5) = 0 ?
         #		    in the case of sin(theta5) < 0 ?
@@ -351,8 +351,10 @@ class MyKukaSolver(object):
             """
             d = theta - old_theta
             if d > np.pi:
+                rospy.logerr("ANGLE_Correction")
                 return theta - 2*np.pi
             elif d < -np.pi:
+                rospy.logerr("ANGLE_Correction")
                 return theta + 2*np.pi
             else:
                 return theta
